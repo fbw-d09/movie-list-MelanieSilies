@@ -18,6 +18,14 @@ const getMovie = (movie) => {
     })
 }
 
+const showMovies = () => {
+    savedMovies.forEach(movie => {
+        getMovie(movie);
+    });
+}
+
+showMovies();
+
 const resetInputfield = () => {
     input.value = '';
     view.removeDisplay();
@@ -32,9 +40,7 @@ btn_save.addEventListener('click', (btn_save) => {
     if (input.value !== '' && !savedMovies.includes(input.value)) {
         saveNewData();
         resetInputfield();
-        savedMovies.forEach(movie => {
-            getMovie(movie);
-        });
+        showMovies();
     } else if (savedMovies.includes(input.value)) {
         alert('dieser Titel ist bereits vorhanden!');
     } else if (input.value == '') {
